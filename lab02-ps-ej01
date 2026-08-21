@@ -1,0 +1,10 @@
+Algoritmo sin_titulo
+	definir area, base, altura Como Real
+	Escribir "Ingrese la altura"
+	leer altura
+	escribir "ingrese la base"
+	Leer base
+	area = base*altura
+	Escribir "tu area es", area
+	
+	
