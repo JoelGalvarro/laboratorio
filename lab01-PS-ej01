@@ -1,0 +1,15 @@
+Algoritmo Preparacion cafepreparado
+	Definir cafepreparado, taza, azucar Como cadena
+	Definir salida como cadena
+	Escribir "que taza queres "
+	Leer taza
+	Escribir "como queres el cafe"
+	Leer cafepreparado
+	Escribir "cuanto azucar queres"
+	Leer azucar
+	Escribir "paso 1:colocar",taza,"en la mesa"
+	Escribir "paso 2:Servir cafe',cafepreparado"de de la",taza
+	Escribir "paso 3:agregar", azucar,"a la", taza
+	Escribir "paso 4:mezclar la taza"
+	Escribir "cafe listo para beber"
+FinAlgoritmo
