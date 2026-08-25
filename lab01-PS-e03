@@ -1,0 +1,12 @@
+Algoritmo sin_titulo
+	Definir salida,camino,entrada, aula como cadena
+	Escribir "a que hora salís de tu casa"
+	Leer salida
+	Escribir "cuanto tardas en llegar a la universidad"
+	Leer camino
+	Escribir "por qué puerta ingresas a la universidad"
+	Leer entrada
+	Escribir "en cual aula pasa clases primero"
+	Leer aula
+	Escribir "sales de tu casa a las",salida,"tardas en el transporte", camino,"entras por el",entrada,"y tu primera clase es un el aula", aula
+FinAlgoritmo
