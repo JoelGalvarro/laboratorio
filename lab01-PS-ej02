@@ -1,0 +1,9 @@
+Algoritmo sin_titulo
+	Definir nombre, edad como cadena 
+	Escribir "Coloca tu nombre"
+	Leer nombre
+	Escribir "colaca tu edad"
+	Leer edad
+	Escribir "tu nombre es", nombre
+	Escribir "tu edad es", edad
+FinAlgoritmo
