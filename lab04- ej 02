@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main(){
+ double a, b, c;
+ string name;
+ cout<<"introduce el nombre: ",;
+ cin>> a;
+ if( a<= 100){
+    cout<<"tu nombre es:" << name << endl;
+    cout<<"categoria : Sin descuento " << endl;
+    cout<<"Sub total : Bs" << a << endl;
+    cout<<"total a pagar: Bs" << a << endl;
+ }
+ else{
+    if(100 < a && a <= 500){
+        b= a - ( a * 0.05);
+        c= a * 0.05;
+        cout<<"tu nombre es :"<< name<< endl;
+        cout<< "categoria : Bronce"<< endl;
+        cout<<"sub total: Bs" << c<< endl;
+        cout<<"total a pagar: bs"<< b<< endl;
+        
+    }
+ }
