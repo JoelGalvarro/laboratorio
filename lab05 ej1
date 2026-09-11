@@ -1,0 +1,103 @@
+#include <iostream>¡
+using namespace std;
+int main() {
+    // declaracin de variable
+    char opcion;
+    int peso;
+    double Tarifabase;
+    double precioPesoExtra;
+    int PesoExtra;
+    double precioTotal;
+    do {
+
+ //  1. Menu interactivo
+ cout<< " CONTROL DE TARIFA DE VIAJES " << endl;
+ cout<< " [L] La paz " << endl;
+ cout<< " [C] Cochabamba" << endl;
+ cout<< " [S] Santa Cruz " << endl;
+ cout<< " [X] Salir del sistema" << endl;
+
+  cout<< "Seleccione una opcion :" ;
+  cin>> opcion;
+
+  // 2. Control de flujo con switch (soporta mayuscula y minusculas)
+  switch (opicion) {
+  case 'L':
+  case 'l':
+    tarifabase = 7.00;
+    precioPesoExtra= 3.00
+
+    cout<< "/n---  DESTINO: LA PAZ/ EL ALTO---" << endl;
+    cout<< "Ingrese el peso de la encomienda: ";
+    cin>> Kilogramos;
+
+    if (Kilogramos< = 0){
+        cout<<"El peso tiene que ser mayor a 0," <<endl;
+    } else if (Kilogramo == 2) {
+    montoTotal= tarifaBase;
+    cout<< "Tarifa base aplicada (2 kilogramos)." << endl;
+    cout<< "Precio final: Bs " << precioTotal << endl;
+    } else {
+  pesoExtra = Kilogramos - 2;
+  precioTotal = tarifaBase + (pesoExtra * precioPesoExtra);
+  cout<< " Tarifa base  + " <<PesoExtra << "Peso(s) extra(s). " << endl
+  cout<< "Precio Total a pagar : Bs " << Preciototal<< endl;
+  }
+  break;
+   case 'C':
+   case 'c':
+     tarifabase = 5.00;
+    precioPesoExtra= 2.00
+
+    cout<< "/n---  DESTINO: LA PAZ/ EL ALTO---" << endl;
+    cout<< "Ingrese el peso de la encomienda: ";
+    cin>> Kilogramos;
+
+    if (Kilogramos< = 0){
+        cout<<"El peso tiene que ser mayor a 0," <<endl;
+    } else if (Kilogramo == 2) {
+    montoTotal= tarifaBase;
+    cout<< "Tarifa base aplicada (2 kilogramos)." << endl;
+    cout<< "Precio final: Bs " << precioTotal << endl;
+    } else {
+  pesoExtra = Kilogramos - 2;
+  precioTotal = tarifaBase + (pesoExtra * precioPesoExtra);
+  cout<< " Tarifa base  + " <<PesoExtra << "Peso(s) extra(s). " << endl
+  cout<< "Precio Total a pagar : Bs " << Preciototal<< endl;
+  }
+  break;
+  case 'S':
+  case 's':
+     tarifabase = 8.00;
+    precioPesoExtra= 4.00
+
+    cout<< "/n---  DESTINO: LA PAZ/ EL ALTO---" << endl;
+    cout<< "Ingrese el peso de la encomienda: ";
+    cin>> Kilogramos;
+
+    if (Kilogramos< = 0){
+        cout<<"El peso tiene que ser mayor a 0," <<endl;
+    } else if (Kilogramo == 2) {
+    montoTotal= tarifaBase;
+    cout<< "Tarifa base aplicada (2 kilogramos)." << endl;
+    cout<< "Precio final: Bs " << precioTotal << endl;
+    } else {
+  pesoExtra = Kilogramos - 2;
+  precioTotal = tarifaBase + (pesoExtra * precioPesoExtra);
+  cout<< " Tarifa base  + " <<PesoExtra << "Peso(s) extra(s). " << endl
+  cout<< "Precio Total a pagar : Bs " << Preciototal<< endl;
+  }
+  break;
+  case 'X':
+   case 'x':
+    cout << " Saliendo del progama. !Que tenga buen viaje!" << endl ;
+    break
+   default:
+    cout << "Opcion no disponible. Intente de nuevo." << endl;
+    break;
+
+    }
+
+    } while (opcion ! = 'X' && opcion ! = 'x');
+    return 0;
+    }
