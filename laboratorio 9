@@ -1,0 +1,55 @@
+#include <iostream>
+
+using namespace std;
+
+
+const int MAX_ELEMENTOS = 100;
+
+
+int leerCantidad();
+void registrarNotas(double notas[], int n);
+double calcularPromedio(const double notas[], int n);
+double obtenerMayor(const double notas[], int n);
+double obtenerMenor(const double notas[], int n);
+void mostrarNotas(const double notas[], int n);
+
+int main() {
+    double notas[MAX_ELEMENTOS];
+
+
+    int n = leerCantidad();
+
+
+    registrarNotas(notas, n);
+
+
+    double promedio = calcularPromedio(notas, n);
+    double mayor = obtenerMayor(notas, n);
+    double menor = obtenerMenor(notas, n);
+
+
+    cout << "\nNOTAS REGISTRADAS" << endl;
+    mostrarNotas(notas, n);
+
+    cout << "Promedio general: " << promedio << endl;
+    cout << "Nota mayor: " << mayor << endl;
+    cout << "Nota menor: " << menor << endl;
+
+    return 0;
+}
+
+
+int leerCantidad() {
+    int n;
+    do {
+        cout << "Ingrese la cantidad de estudiantes: ";
+        cin >> n;
+        if (n < 1 || n > MAX_ELEMENTOS) {
+            cout << "[ERROR] La cantidad debe estar entre 1 y " << MAX_ELEMENTOS << ".\n";
+        }
+    } while (n < 1 || n > MAX_ELEMENTOS);
+    return n;
+}
+
+
+
