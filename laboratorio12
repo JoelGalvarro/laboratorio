@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Prototipos (con ';' al final y '&' en leer para guardar los datos)
+void leer(string &a, string &b);
+int BuscarSubCadena(string a, string b);
+void mostrar(string a, string b);
+
+int main() {
+    string a, b;
+    leer(a, b);
+    mostrar(a, b);
+
+    return 0;
+}
+
+void leer(string &a, string &b) {
+    cout << "Ingrese la subcadena (a): ";
+    getline(cin, a);
+    cout << "Ingrese la cadena (b): ";
+    getline(cin, b);
+}
+
+int BuscarSubCadena(string a, string b) {
+    int tamA = a.length();
+    int tamB = b.size();
+
+    // Si 'a' está vacía o es más larga que 'b', no puede existir dentro de 'b'
+    if (tamA == 0 || tamA > tamB) {
+        return -1;
+    }
+
+    // Recorre 'b' extrayendo fragmentos del tamaño de 'a'
+    for (int i = 0; i <= tamB - tamA; i++) {
+        string pedazo = b.substr(i, tamA);
+        if (pedazo.find(a) != string::npos) {
+            return i; // Devuelve la posición de la primera aparición
+        }
+    }
+
+    return -1; // Devuelve -1 si no se encontró
+}
+
+void mostrar(string a, string b) {
+    int posicion = BuscarSubCadena(a, b);
+    cout << "Salida: " << posicion << endl;
+}
