@@ -1,0 +1,69 @@
+#include <iostream>
+using namespace std;
+
+long long leerNumero();
+long long calcularSumaHastaN(long long n);
+int contarDigitos(long long n);
+int sumarDigitos(long long n);
+void mostrarResultados(long long n, long long sumaHastaN, int cantidadDigitos, int sumaDigitos);
+
+int main() {
+    long long n = leerNumero();
+    long long sumaHastaN = calcularSumaHastaN(n);
+    int cantidadDigitos = contarDigitos(n);
+    int sumaDigitos = sumarDigitos(n);
+
+    mostrarResultados(n, sumaHastaN, cantidadDigitos, sumaDigitos);
+
+    return 0;
+}
+
+long long leerNumero() {
+    long long n = 0;
+    do {
+        cout << "Ingrese un numero entero positivo (N > 0): ";
+        cin >> n;
+        if (cin.fail() || n <= 0) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Numero invalido. Debe ser mayor que 0.\n";
+            n = 0;
+        }
+    } while (n <= 0);
+    return n;
+}
+
+long long calcularSumaHastaN(long long n) {
+    long long suma = 0;
+    for (long long i = 1; i <= n; i++) {
+        suma += i;
+    }
+    return suma;
+}
+
+int contarDigitos(long long n) {
+    int contador = 0;
+    long long temp = n;
+    while (temp > 0) {
+        contador++;
+        temp /= 10;
+    }
+    return contador;
+}
+
+int sumarDigitos(long long n) {
+    int suma = 0;
+    long long temp = n;
+    do {
+        suma += static_cast<int>(temp % 10);
+        temp /= 10;
+    } while (temp > 0);
+    return suma;
+}
+
+void mostrarResultados(long long n, long long sumaHastaN, int cantidadDigitos, int sumaDigitos) {
+    cout << "\n--- Resultados para N = " << n << " ---\n";
+    cout << "Suma de 1 hasta N: " << sumaHastaN << "\n";
+    cout << "Cantidad de digitos: " << cantidadDigitos << "\n";
+    cout << "Suma de digitos: " << sumaDigitos << "\n";
+}
