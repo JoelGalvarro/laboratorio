@@ -1,0 +1,98 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+const int MAX_DIAS = 365;
+
+int leerCantidadDias();
+void leerVentas(double ventas[], int n);
+string clasificarVenta(double monto);
+void procesarVentas(const double ventas[], int n, double& total, double& promedio, int& diasAltos);
+void mostrarResultados(const double ventas[], int n, double total, double promedio, int diasAltos);
+
+int main() {
+    int n = leerCantidadDias();
+    double ventas[MAX_DIAS];
+    double total = 0.0;
+    double promedio = 0.0;
+    int diasAltos = 0;
+
+    leerVentas(ventas, n);
+    procesarVentas(ventas, n, total, promedio, diasAltos);
+    mostrarResultados(ventas, n, total, promedio, diasAltos);
+
+    return 0;
+}
+
+int leerCantidadDias() {
+    int n = 0;
+    do {
+        cout << "Ingrese la cantidad de dias a evaluar (1 a " << MAX_DIAS << "): ";
+        cin >> n;
+        if (cin.fail() || n < 1 || n > MAX_DIAS) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Cantidad invalida. Intente nuevamente.\n";
+            n = 0;
+        }
+    } while (n < 1 || n > MAX_DIAS);
+    return n;
+}
+
+void leerVentas(double ventas[], int n) {
+    for (int i = 0; i < n; i++) {
+        do {
+            cout << "Ingrese el monto vendido en el dia " << (i + 1) << " (>= 0): Bs ";
+            cin >> ventas[i];
+            if (cin.fail() || ventas[i] < 0.0) {
+                cin.clear();
+                cin.ignore(10000, '\n');
+                cout << "Monto invalido. Debe ser mayor o igual a 0.\n";
+                ventas[i] = -1.0;
+            }
+        } while (ventas[i] < 0.0);
+    }
+}
+
+string clasificarVenta(double monto) {
+    if (monto > 1000.0) {
+        if (monto > 2000.0) {
+            return "Venta excelente (alta)";
+        } else {
+            return "Venta alta";
+        }
+    } else {
+        if (monto < 500.0) {
+            return "Venta baja (regular)";
+        } else {
+            return "Venta regular";
+        }
+    }
+}
+
+void procesarVentas(const double ventas[], int n, double& total, double& promedio, int& diasAltos) {
+    total = 0.0;
+    diasAltos = 0;
+
+    for (int i = 0; i < n; i++) {
+        total += ventas[i];
+        if (ventas[i] > 1000.0) {
+            diasAltos++;
+        }
+    }
+
+    promedio = total / n;
+}
+
+void mostrarResultados(const double ventas[], int n, double total, double promedio, int diasAltos) {
+    cout << "\n--- Clasificacion diaria ---\n";
+    for (int i = 0; i < n; i++) {
+        cout << "Dia " << (i + 1) << ": Bs " << ventas[i]
+             << " -> " << clasificarVenta(ventas[i]) << "\n";
+    }
+
+    cout << "\n--- Resumen de ventas ---\n";
+    cout << "Monto total vendido: Bs " << total << "\n";
+    cout << "Promedio diario: Bs " << promedio << "\n";
+    cout << "Dias con ventas superiores a Bs 1.000: " << diasAltos << "\n";
+}
