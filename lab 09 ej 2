@@ -1,0 +1,102 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+
+void leerCoeficientes(double &a, double &b, double &c);
+double calcularDiscriminante(double a, double b, double c);
+string determinarTipoSolucion(double a, double discriminante);
+void calcularRaices(double a, double b, double discriminante, double &x1, double &x2);
+void mostrarResultado(double a, double discriminante, double x1, double x2);
+
+int main() {
+    double a;
+    double b;
+    double c;
+    double discriminante;
+    double x1;
+    double x2;
+
+    x1 = 0.0;
+    x2 = 0.0;
+
+    leerCoeficientes(a, b, c);
+    discriminante = calcularDiscriminante(a, b, c);
+
+    if (a != 0.0 && discriminante >= 0.0) {
+        calcularRaices(a, b, discriminante, x1, x2);
+    }
+
+    mostrarResultado(a, discriminante, x1, x2);
+
+    return 0;
+}
+
+void leerCoeficientes(double &a, double &b, double &c) {
+    bool valido;
+
+    valido = false;
+    while (!valido) {
+        cout << "Ingrese los coeficientes a, b y c: ";
+        cin >> a >> b >> c;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Entrada invalida. Ingrese tres numeros.\n";
+        } else {
+            valido = true;
+        }
+    }
+}
+
+double calcularDiscriminante(double a, double b, double c) {
+    double disc;
+    disc = (b * b) - (4.0 * a * c);
+    return disc;
+}
+
+string determinarTipoSolucion(double a, double discriminante) {
+    string tipo;
+
+    if (a == 0.0) {
+        tipo = "La ecuacion no es cuadratica (a = 0)";
+    } else if (discriminante > 0.0) {
+        tipo = "Dos soluciones reales distintas";
+    } else if (discriminante == 0.0) {
+        tipo = "Una solucion real doble";
+    } else {
+        tipo = "No existen soluciones reales";
+    }
+
+    return tipo;
+}
+
+void calcularRaices(double a, double b, double discriminante, double &x1, double &x2) {
+    double raizDisc;
+
+    raizDisc = sqrt(discriminante);
+    if (discriminante == 0.0) {
+        x1 = -b / (2.0 * a);
+        x2 = x1;
+    } else {
+        x1 = (-b + raizDisc) / (2.0 * a);
+        x2 = (-b - raizDisc) / (2.0 * a);
+    }
+}
+
+void mostrarResultado(double a, double discriminante, double x1, double x2) {
+    string tipo;
+
+    tipo = determinarTipoSolucion(a, discriminante);
+    cout << "\nTipo de solucion: " << tipo << "\n";
+
+    if (a != 0.0) {
+        cout << "Discriminante (delta): " << discriminante << "\n";
+        if (discriminante > 0.0) {
+            cout << "x1 = " << x1 << "\n";
+            cout << "x2 = " << x2 << "\n";
+        } else if (discriminante == 0.0) {
+            cout << "x1 = x2 = " << x1 << "\n";
+        }
+    }
+}
