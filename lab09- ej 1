@@ -1,0 +1,72 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void leerPeso(double &peso);
+void calcularCosto(double peso, double &costo, string &estado);
+void mostrarResultado(double peso, double costo, const string &estado);
+
+int main() {
+    double peso;
+    double costo;
+    string estado;
+
+    leerPeso(peso);
+    calcularCosto(peso, costo, estado);
+    mostrarResultado(peso, costo, estado);
+
+    return 0;
+}
+
+void leerPeso(double &peso) {
+    bool entradaValida;
+
+    entradaValida = false;
+    while (!entradaValida) {
+        cout << "Ingrese el peso de la carta en gramos: ";
+        cin >> peso;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Entrada invalida. Ingrese un valor numerico.\n";
+        } else {
+            entradaValida = true;
+        }
+    }
+}
+
+void calcularCosto(double peso, double &costo, string &estado) {
+    costo = 0.0;
+
+    if (peso <= 0.0) {
+        estado = "Peso no valido";
+    } else if (peso < 50.0) {
+        costo = 1.50;
+        estado = "OK";
+    } else if (peso == 50.0) {
+        estado = "Tarifa no definida para 50 g";
+    } else if (peso <= 100.0) {
+        costo = 4.00;
+        estado = "OK";
+    } else if (peso <= 200.0) {
+        costo = 6.00;
+        estado = "OK";
+    } else if (peso <= 350.0) {
+        costo = 10.50;
+        estado = "OK";
+    } else if (peso <= 500.0) {
+        costo = 15.00;
+        estado = "OK";
+    } else {
+        estado = "NO PUEDE ENVIAR COMO CARTA";
+    }
+}
+
+void mostrarResultado(double peso, double costo, const string &estado) {
+    cout << "\nPeso ingresado: " << peso << " g\n";
+    if (estado == "OK") {
+        cout << "Costo de envio: Bs " << costo << "\n";
+    } else {
+        cout << "Resultado: " << estado << "\n";
+    }
+}
