@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+
+void leerNumero(int &N);
+void descomponerNumero(int N, int &u, int &d, int &c, int &m);
+void mostrarDigitos(int u, int d, int c, int m);
+
+int main() {
+    int N;
+    int u;
+    int d;
+    int c;
+    int m;
+
+    leerNumero(N);
+    descomponerNumero(N, u, d, c, m);
+    mostrarDigitos(u, d, c, m);
+
+    return 0;
+}
+
+void leerNumero(int &N) {
+    bool valido;
+
+    valido = false;
+    while (!valido) {
+        cout << "Ingrese un numero entero positivo menor que 10000 (1 <= N < 10000): ";
+        cin >> N;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Entrada invalida. Ingrese un numero entero.\n";
+        } else if (N < 1 || N >= 10000) {
+            cout << "Numero fuera de rango. Debe cumplir 1 <= N < 10000.\n";
+        } else {
+            valido = true;
+        }
+    }
+}
+
+void descomponerNumero(int N, int &u, int &d, int &c, int &m) {
+    int temp;
+
+    temp = N;
+    u = temp % 10;
+    temp = temp / 10;
+
+    d = temp % 10;
+    temp = temp / 10;
+
+    c = temp % 10;
+    temp = temp / 10;
+
+    m = temp % 10;
+}
+
+void mostrarDigitos(int u, int d, int c, int m) {
+    cout << "\nUnidades (u): " << u << "\n";
+    cout << "Decenas (d): " << d << "\n";
+    cout << "Centenas (c): " << c << "\n";
+    cout << "Unidades de mil (m): " << m << "\n";
+}
