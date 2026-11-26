@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+long long leerNumero();
+void procesarDigitos(long long numero, int& mayor, int& menor, int& sumaPares);
+void mostrarResultados(int mayor, int menor, int sumaPares);
+
+int main() {
+    long long numero = leerNumero();
+    int mayor = 0;
+    int menor = 0;
+    int sumaPares = 0;
+
+    procesarDigitos(numero, mayor, menor, sumaPares);
+    mostrarResultados(mayor, menor, sumaPares);
+
+    return 0;
+}
+
+long long leerNumero() {
+    long long n = 0;
+    do {
+        cout << "Ingrese un numero entero positivo (N > 0): ";
+        cin >> n;
+        if (cin.fail() || n <= 0) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Valor invalido. Debe ingresar un entero positivo mayor que cero.\n";
+            n = 0;
+        }
+    } while (n <= 0);
+    return n;
+}
+
+void procesarDigitos(long long numero, int& mayor, int& menor, int& sumaPares) {
+    long long copia = numero;
+    int primerDigito = static_cast<int>(copia % 10);
+    mayor = primerDigito;
+    menor = primerDigito;
+    sumaPares = 0;
+
+    while (copia > 0) {
+        int digito = static_cast<int>(copia % 10);
+
+        if (digito > mayor) {
+            mayor = digito;
+        }
+        if (digito < menor) {
+            menor = digito;
+        }
+        if (digito % 2 == 0) {
+            sumaPares += digito;
+        }
+
+        copia /= 10;
+    }
+}
+
+void mostrarResultados(int mayor, int menor, int sumaPares) {
+    cout << "\n--- Resultados del analisis de digitos ---\n";
+    cout << "Digito mayor: " << mayor << "\n";
+    cout << "Digito menor: " << menor << "\n";
+    cout << "Suma de digitos pares: " << sumaPares << "\n";
+}
