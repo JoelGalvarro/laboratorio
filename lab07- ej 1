@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+const int DIAS = 5;
+
+void leerVentas(double ventas[], int n);
+void procesarVentas(const double ventas[], int n, double& total, double& promedio, int& diasSuperiores);
+void mostrarResultados(double total, double promedio, int diasSuperiores);
+
+int main() {
+    double ventas[DIAS];
+    double total = 0.0;
+    double promedio = 0.0;
+    int diasSuperiores = 0;
+
+    leerVentas(ventas, DIAS);
+    procesarVentas(ventas, DIAS, total, promedio, diasSuperiores);
+    mostrarResultados(total, promedio, diasSuperiores);
+
+    return 0;
+}
+
+void leerVentas(double ventas[], int n) {
+    for (int i = 0; i < n; i++) {
+        do {
+            cout << "Ingrese la venta del dia " << (i + 1) << " (>= 0): ";
+            cin >> ventas[i];
+            if (cin.fail() || ventas[i] < 0) {
+                cin.clear();
+                cin.ignore(10000, '\n');
+                cout << "Entrada invalida. Ingrese un monto mayor o igual a 0.\n";
+                ventas[i] = -1;
+            }
+        } while (ventas[i] < 0);
+    }
+}
+
+void procesarVentas(const double ventas[], int n, double& total, double& promedio, int& diasSuperiores) {
+    total = 0.0;
+    for (int i = 0; i < n; i++) {
+        total += ventas[i];
+    }
+
+    promedio = total / n;
+
+    diasSuperiores = 0;
+    for (int i = 0; i < n; i++) {
+        if (ventas[i] > promedio) {
+            diasSuperiores++;
+        }
+    }
+}
+
+void mostrarResultados(double total, double promedio, int diasSuperiores) {
+    cout << "\n--- Resultados del analisis de ventas ---\n";
+    cout << "Total vendido: " << total << "\n";
+    cout << "Promedio diario: " << promedio << "\n";
+    cout << "Dias superiores al promedio: " << diasSuperiores << "\n";
+}
